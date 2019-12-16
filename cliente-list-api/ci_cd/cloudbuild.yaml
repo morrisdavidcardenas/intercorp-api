@@ -1,0 +1,14 @@
+steps:
+  # build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--build-arg', 'environment=$_ENV'
+    ,'-t', 'gcr.io/$PROJECT_ID/cliente-list-api-$_ENV', '.']
+  # push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/cliente-list-api-$_ENV']
+  # Deploy container image to Cloud Run
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['beta', 'run', 'deploy'
+    , 'cliente-list-api-$_ENV', '--image', 'gcr.io/$PROJECT_ID/cliente-list-api-$_ENV', '--region', 'us-east1','--platform', 'managed', '--quiet', --allow-unauthenticated]
+images:
+- gcr.io/$PROJECT_ID/cliente-list-api-$_ENV
