@@ -37,7 +37,7 @@
     "nconf": "^0.10.0",
     "pdf-parse": "^1.1.1",
     "pify": "^4.0.1",
-    "qs": "^6.8.0",
+    "qs": "^6.9.7",
     "querystring": "^0.2.0",
     "request": "^2.88.0",
     "solo-camel-case-to-words": "^1.0.0",
